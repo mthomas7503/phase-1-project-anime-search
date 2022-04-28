@@ -1,5 +1,5 @@
 function getAnime (name) {
-    fetch(`https://api.jikan.moe/v4/anime/?q=${name}`).then(resp => resp.json()).then(x => x.data.url)
+    fetch(`https://api.jikan.moe/v4/anime/?q=${name}`).then(resp => resp.json()).then(x => console.log(x).catch(err => console.log(err)))
 }
 
 function createSubmit() {
@@ -14,6 +14,7 @@ function createSubmit() {
     input.setAttribute("placeholder", "Anime");
     form.reset();
     form.addEventListener('submit', x => {x.preventDefault();
+        getAnime(input.value);
         form.reset()})
 }
 
@@ -22,3 +23,4 @@ const request = document.querySelector('form')
 
 
 document.addEventListener('DOMContentLoaded', createSubmit())
+
