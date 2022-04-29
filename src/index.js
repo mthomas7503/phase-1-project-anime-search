@@ -31,7 +31,16 @@ function createSubmit() {
         form.reset()})
 }
 
-
+function createLi(x) {
+    x.data.forEach(y => {
+        const li = document.createElement('li');
+        const ul = document.createElement('ul')
+        const info = document.querySelector('#info')
+        info.appendChild(ul)
+        ul.appendChild(li)
+        li.innerHTML = `<img src="${y.images.jpg.large_image_url}">
+        ${y.status}`
+})}
 
 const request = document.querySelector('form')
 
