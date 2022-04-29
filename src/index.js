@@ -1,5 +1,18 @@
+
 function getAnime (name) {
-    fetch(`https://api.jikan.moe/v4/anime/?q=${name}`).then(resp => resp.json()).then(x => console.log(x).catch(err => console.log(err)))
+    fetch(`https://api.jikan.moe/v4/anime?q=${name}`).then(resp => resp.json()).then(x => createLi(x)).catch(err => console.log(err.message))
+}
+
+function clear() {
+const form = document.createElement('form');
+document.querySelector('#clear').appendChild(form);
+const empty = document.createElement('input')
+form.appendChild(empty);
+empty.setAttribute("type", "submit")
+empty.setAttribute("id", "clear")
+empty.setAttribute("value", "Clear")
+empty.addEventListener('submit', () => {const ul = document.querySelectorAll('ul')
+ul.forEach(x => x.remove())})
 }
 
 function createSubmit() {
@@ -19,8 +32,9 @@ function createSubmit() {
 }
 
 
+
 const request = document.querySelector('form')
 
 
-document.addEventListener('DOMContentLoaded', createSubmit())
+document.addEventListener('DOMContentLoaded', function() {createSubmit(); clear()})
 
