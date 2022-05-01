@@ -36,10 +36,12 @@ function createLi(x) {
         const li = document.createElement('li');
         const ul = document.createElement('ul')
         const info = document.querySelector('#info')
+        const p = document.createElement('p')
         info.appendChild(ul)
         ul.appendChild(li)
-        li.innerHTML = `<img src="${y.images.jpg.large_image_url}">
-        ${y.status}`
+        li.innerHTML = `<a href="${y.url}" target="_blank">
+        <img src="${y.images.jpg.image_url}" ></a>`
+        
 })}
 
 const request = document.querySelector('form')
