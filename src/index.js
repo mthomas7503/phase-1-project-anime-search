@@ -1,7 +1,9 @@
 
 function getAnime (name) {
-    fetch(`https://api.jikan.moe/v4/anime?q=${name}`).then(resp => resp.json()).then(x => createLi(x)).catch(err => console.log(err.message))
-}
+        fetch(`https://api.jikan.moe/v4/anime?q=${name}`).then(resp => resp.json()).then(x => {createLi(x); flagIssue(x)}).catch((err) =>alert(`${err.message}`))}
+
+
+function flagIssue(x) {if(x.pagination.items.count === 0) {alert("Anime not found!")}}
 
 function clear() {
 const form = document.createElement('form');
@@ -42,13 +44,13 @@ function createLi(x) {
         li.innerHTML = `<a href="${y.trailer.url}" target="_blank">
         <img src="${y.images.jpg.image_url}" ></a>`
         li.appendChild(p)
-        p.innerHTML =  `<ul><li>${y.status}</li><li>${y.episodes}</li><li>${y.synopsis}</li>
-        <li>`
+        p.innerHTML =  `<ul>
+        <li>${y.title}</li>
+        <li>${y.rating}</li>
+        <li>${y.status}</li><li>${y.episodes}</li><li>${y.synopsis}</li>`
 
         
 })}
-
-const request = document.querySelector('form')
 
 
 document.addEventListener('DOMContentLoaded', function() {createSubmit(); clear()})
