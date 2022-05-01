@@ -29,8 +29,12 @@ function createSubmit() {
     input.setAttribute("placeholder", "Anime");
     form.reset();
     form.addEventListener('submit', x => {x.preventDefault();
-        getAnime(input.value);
-        form.reset()})
+        if (document.querySelector('ul')) {ul = document.querySelectorAll('ul');  
+        ul.forEach(x => x.remove()); 
+        getAnime(input.value)
+    form.reset()} 
+        else {getAnime(input.value);
+        form.reset()}})
 }
 
 function createLi(x) {
