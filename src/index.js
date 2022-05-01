@@ -37,9 +37,8 @@ function createSubmit() {
         form.reset()}})
 }
 
-function createLi(x) {
-    x.data.forEach(y => {
-        if (y.rating === "Rx - Hentai") { const ul = document.createElement('ul')
+function filterAdult(y) {
+    const ul = document.createElement('ul')
     const li = document.createElement('li')
     const info = document.querySelector('#info')
     const p = document.createElement('p')
@@ -51,22 +50,28 @@ function createLi(x) {
     p.innerHTML =  `<ul>
     <li>${y.title}</li>
     <li>${y.rating}</li>
-    <li>${y.status}</li><li>${y.episodes}</li><li>${y.synopsis}</li>`;
+    <li>${y.status}</li><li>${y.episodes}</li><li>${y.synopsis}</li>`
 }
-else{
-        const ul = document.createElement('ul')
-        const li = document.createElement('li')
-        const info = document.querySelector('#info')
-        const p = document.createElement('p')
-        info.appendChild(ul)
-        ul.appendChild(li)
-        li.innerHTML = `<a href="${y.trailer.url}" target="_blank">
-        <img src="${y.images.jpg.image_url}" ></a>`
-        li.appendChild(p)
-        p.innerHTML =  `<ul>
-        <li>${y.title}</li>
-        <li>${y.rating}</li>
-        <li>${y.status}</li><li>${y.episodes}</li><li>${y.synopsis}</li>`
+
+function createInfo(y) {const ul = document.createElement('ul')
+const li = document.createElement('li')
+const info = document.querySelector('#info')
+const p = document.createElement('p')
+info.appendChild(ul)
+ul.appendChild(li)
+li.innerHTML = `<a href="${y.trailer.url}" target="_blank">
+<img src="${y.images.jpg.image_url}" ></a>`
+li.appendChild(p)
+p.innerHTML =  `<ul>
+<li>${y.title}</li>
+<li>${y.rating}</li>
+<li>${y.status}</li><li>${y.episodes}</li><li>${y.synopsis}</li>`}
+
+function createLi(x) {
+    x.data.forEach(y => {
+        if (y.rating === "Rx - Hentai") { filterAdult(y)
+}
+else{createInfo(y)
 }})}
 
 

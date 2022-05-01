@@ -1,0 +1,14 @@
+body {
+    width: 700px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto
+}
+
+ul {
+    width: 700px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    list-style-type: ★;
+}
