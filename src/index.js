@@ -33,14 +33,18 @@ function createSubmit() {
 
 function createLi(x) {
     x.data.forEach(y => {
-        const li = document.createElement('li');
         const ul = document.createElement('ul')
+        const li = document.createElement('li')
         const info = document.querySelector('#info')
         const p = document.createElement('p')
         info.appendChild(ul)
         ul.appendChild(li)
-        li.innerHTML = `<a href="${y.url}" target="_blank">
+        li.innerHTML = `<a href="${y.trailer.url}" target="_blank">
         <img src="${y.images.jpg.image_url}" ></a>`
+        li.appendChild(p)
+        p.innerHTML =  `<ul><li>${y.status}</li><li>${y.episodes}</li><li>${y.synopsis}</li>
+        <li>`
+
         
 })}
 
