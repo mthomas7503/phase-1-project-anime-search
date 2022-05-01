@@ -38,19 +38,21 @@ function createSubmit() {
 }
 
 function filterAdult(y) {
-    const ul = document.createElement('ul')
-    const li = document.createElement('li')
-    const info = document.querySelector('#info')
-    const p = document.createElement('p')
-    info.appendChild(ul)
-    ul.appendChild(li)
+    const ul = document.createElement('ul');
+    const li = document.createElement('li');
+    const info = document.querySelector('#info');
+    const p = document.createElement('p');
+    info.appendChild(ul);
+    ul.appendChild(li);
     li.innerHTML = `<a href="${y.trailer.url}">
-    <img src="https://cdn.xxl.thumbs.canstockphoto.com/no-entry-under-18-sign-stock-illustration_csp2636378.jpg" ></a>`
-    li.appendChild(p)
+    <img src="https://cdn.xxl.thumbs.canstockphoto.com/no-entry-under-18-sign-stock-illustration_csp2636378.jpg" ></a>`;
+    li.appendChild(p);
+    li.setAttribute("class", "adult")
     p.innerHTML =  `<ul>
     <li>${y.title}</li>
     <li>${y.rating}</li>
-    <li>${y.status}</li><li>${y.episodes}</li><li>${y.synopsis}</li>`
+    <li>${y.status}</li><li>${y.episodes}</li><li>${y.synopsis}</li>`;
+
 }
 
 function createInfo(y) {const ul = document.createElement('ul')
@@ -69,7 +71,11 @@ p.innerHTML =  `<ul>
 
 function createLi(x) {
     x.data.forEach(y => {
-        if (y.rating === "Rx - Hentai") { filterAdult(y)
+        if (y.rating === "Rx - Hentai") {filterAdult(y);
+           const adult = document.querySelector('.adult')
+            const adultAll = document.querySelectorAll('.adult')
+            if (adultAll.length > 1) {adultAll.remove()}
+            else {adult.remove()}
 }
 else{createInfo(y)
 }})}
