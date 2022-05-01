@@ -39,6 +39,21 @@ function createSubmit() {
 
 function createLi(x) {
     x.data.forEach(y => {
+        if (y.rating === "Rx - Hentai") { const ul = document.createElement('ul')
+    const li = document.createElement('li')
+    const info = document.querySelector('#info')
+    const p = document.createElement('p')
+    info.appendChild(ul)
+    ul.appendChild(li)
+    li.innerHTML = `<a href="${y.trailer.url}">
+    <img src="https://cdn.xxl.thumbs.canstockphoto.com/no-entry-under-18-sign-stock-illustration_csp2636378.jpg" ></a>`
+    li.appendChild(p)
+    p.innerHTML =  `<ul>
+    <li>${y.title}</li>
+    <li>${y.rating}</li>
+    <li>${y.status}</li><li>${y.episodes}</li><li>${y.synopsis}</li>`;
+}
+else{
         const ul = document.createElement('ul')
         const li = document.createElement('li')
         const info = document.querySelector('#info')
@@ -52,9 +67,7 @@ function createLi(x) {
         <li>${y.title}</li>
         <li>${y.rating}</li>
         <li>${y.status}</li><li>${y.episodes}</li><li>${y.synopsis}</li>`
-
-        
-})}
+}})}
 
 
 document.addEventListener('DOMContentLoaded', function() {createSubmit(); clear()})
