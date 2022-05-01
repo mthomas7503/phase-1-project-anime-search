@@ -1,9 +1,12 @@
 
 function getAnime (name) {
-        fetch(`https://api.jikan.moe/v4/anime?q=${name}`).then(resp => resp.json()).then(x => {createLi(x); flagIssue(x)}).catch((err) =>alert(`${err.message}`))}
+        fetch(`https://api.jikan.moe/v4/anime?q=${name}`).then(resp => resp.json()).then(x => {createLi(x); flagIssue(x);adjustNull()}).catch((err) =>alert(`${err.message}`))}
 
 
 function flagIssue(x) {if(x.pagination.items.count === 0) {alert("Anime not found!")}}
+
+function adjustNull() {const AllLi = document.querySelectorAll('li');
+AllLi.forEach(z => {if (z.innerHTML === 'null') {z.innerText = "Pending"}})}
 
 function clear() {
 const form = document.createElement('form');
@@ -77,7 +80,7 @@ function createLi(x) {
             if (adultAll.length > 1) {adultAll.remove()}
             else {adult.remove()}
 }
-else{createInfo(y)
+else{createInfo(y);
 }})}
 
 
