@@ -8,7 +8,7 @@ function flagIssue(x) {if(x.pagination.items.count === 0) {alert("Anime not foun
 function adjustNull() {const AllLi = document.querySelectorAll('li');
 AllLi.forEach(z => {if (z.innerHTML === 'null') {z.innerText = "Pending"}})}
 
-function clear() {
+/*function clear() {
 const form = document.createElement('form');
 document.querySelector('#clear').appendChild(form);
 const empty = document.createElement('input')
@@ -18,7 +18,7 @@ empty.setAttribute("id", "clear")
 empty.setAttribute("value", "Clear")
 empty.addEventListener('submit', () => {const ul = document.querySelectorAll('ul')
 ul.forEach(x => x.remove())})
-}
+}*/
 
 function createSubmit() {
     const form = document.createElement('form');
@@ -84,5 +84,5 @@ else{createInfo(y);
 }})}
 
 
-document.addEventListener('DOMContentLoaded', function() {createSubmit(); clear()})
+document.addEventListener('DOMContentLoaded', function() {createSubmit()})
 
