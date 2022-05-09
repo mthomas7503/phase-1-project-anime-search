@@ -70,6 +70,10 @@ function createLi(x) {
         else{createInfo(y);
 }})}
 
+function changeATag() {
+    const a = document.querySelectorAll('a');
+    a.forEach(x => x.addEventListener('click', () => {x.style.color="purple"}))
+}
 
-document.addEventListener('DOMContentLoaded', function() {createSubmit()})
+document.addEventListener('DOMContentLoaded', function() {createSubmit(); changeATag()})
 
