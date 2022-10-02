@@ -1,6 +1,9 @@
 
 function getAnime (name) {
-        fetch(`https://api.jikan.moe/v4/anime?q=${name}`).then(resp => resp.json()).then(x => {createLi(x); flagIssue(x);adjustNull()}).catch((err) =>alert(`${err.message}`))}
+        fetch(`https://api.jikan.moe/v4/anime?q=${name}`)
+        .then(resp => resp.json())
+        .then(x => {createLi(x); flagIssue(x);adjustNull()})
+        .catch((err) =>alert(`${err.message}`))}
 
 
 function flagIssue(x) {if(x.pagination.items.count === 0) {alert("Anime not found!")}}
@@ -17,14 +20,16 @@ function createSubmit() {
     sub.setAttribute("type", "submit");
     input.setAttribute("type", "text");
     input.setAttribute("placeholder", "Anime");
-    form.reset();
     form.addEventListener('submit', x => {x.preventDefault();
-        if (document.querySelector('ul')) {ul = document.querySelectorAll('ul');  
-        ul.forEach(x => x.remove()); 
-        getAnime(input.value)
-        form.reset()} 
-        else {getAnime(input.value);
-        form.reset()}})
+        if (document.querySelector('ul')) {
+            ul = document.querySelectorAll('ul');  
+            ul.forEach(x => x.remove()); 
+            getAnime(input.value)
+            form.reset()
+        } else {
+            getAnime(input.value);
+            form.reset()
+        }})
 }
 
 function filterAdult(y) {
@@ -77,3 +82,17 @@ function changeATag() {
 
 document.addEventListener('DOMContentLoaded', function() {createSubmit(); changeATag()})
 
+function counter() {
+    const incrButton = document.createElement('button');
+    let incVal = 0;
+    incrButton.innerText="+";
+    const topDiv = document.querySelector('div');
+    topDiv.appendChild(incrButton);
+    incrButton.addEventListener('click', function(){
+        incVal+=1;
+        console.log(incVal)
+    }
+    )
+}
+
+counter()
